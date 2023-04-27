@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+:root {
+	--dark: #070706;
+	--light: #f6fffe;
+	--accent: #ec4562;
+	--anim: 0.2s ease-out;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+body {
+    background: var(--dark);
+	color: var(--light);
+	font-size: 1.5rem;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	padding: 1rem 15rem;
+}
+section {
+	border-radius: 0.15rem;
+	overflow: hidden;
+}
+table {
+	border-collapse: collapse;
+}
+td {
+	border: 1px solid var(--accent);
+}
+td:first-child {
+	border-left: none;
+}
+td:last-child {
+	border-right: none;
+}
+tr:first-child > td {
+	border-top: none;
+}
+tr:last-child > td {
+	border-bottom: none;
+}
+.dropdown {
+	float: right;
+	width: 1em;
+	//background: var(--light);
+}
+.collapsible {
+	cursor: pointer;
+	border-color: transparent;
+	background-color: var(--accent);
+	color: var(--light);
+	font: inherit;
+	font-weight: 700;
+	width: 100%;
+	text-align: left;
+	transition: background-color var(--anim), color var(--anim);
+	padding: 0.5em;
+}
+.collapsible:hover {
+	background-color: var(--light);
+	color: var(--accent);
+	filter: drop-shadow(0 3px 0 var(--accent));
+}
+.collapseContent {
+	background: var(--light);
+	color: var(--dark);
+	max-height: 0;
+	transition: max-height var(--anim);
+	overflow: hidden;
+}
+.collapseContent > table {
+	width: 100%;
+}
+.dropdown {
+	transform-origin: center;
+	rotate: 0deg;
+	transition: rotate var(--anim), fill var(--anim), stroke var(--anim);
+}
+.active > .dropdown {
+	rotate: 90deg;
+}
+.collapsible:hover > .dropdown {
+	//fill: var(--accent);
+	stroke: var(--accent);
+}

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap');
 :root {
-	--dark: #070706;
-	--light: #f6fffe;
-	--accent: #ec4562;
+	--dark: #0a1917;
+	--light: #f6f2f4;
+	--accent: #f80011;
 	--anim: 0.2s ease-out;
 }
 *, *::before, *::after {
@@ -16,9 +16,11 @@ body {
 	font-weight: 500;
 	padding: 1rem 15rem;
 }
+hr {
+	border-color: var(--accent);
+}
 section {
-	border-radius: 0.15rem;
-	overflow: hidden;
+	margin: 5rem 0;
 }
 table {
 	border-collapse: collapse;
@@ -87,4 +89,8 @@ select {
 .collapsible:hover > .dropdown {
 	//fill: var(--accent);
 	stroke: var(--accent);
+}
+.collapseContainer {
+	border-radius: 0.15rem;
+	overflow: hidden;
 }

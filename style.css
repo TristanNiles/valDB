@@ -46,11 +46,6 @@ select {
 	color: var(--light);
 	font: inherit;
 }
-.dropdown {
-	float: right;
-	width: 1em;
-	//background: var(--light);
-}
 .collapsible {
 	cursor: pointer;
 	border-color: transparent;
@@ -62,6 +57,7 @@ select {
 	text-align: left;
 	transition: background-color var(--anim), color var(--anim);
 	padding: 0.5rem;
+	position: relative;
 }
 .collapsible:hover {
 	background-color: var(--light);
@@ -79,6 +75,11 @@ select {
 	width: 100%;
 }
 .dropdown {
+	height: 100%;
+	aspect-ratio: 1;
+	position: absolute;
+	right: 0.5rem;
+	top: 0;
 	transform-origin: center;
 	rotate: 0deg;
 	transition: rotate var(--anim), fill var(--anim), stroke var(--anim);

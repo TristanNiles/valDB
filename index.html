@@ -27,23 +27,13 @@
 		                c0.544,0.029,1.099-0.162,1.515-0.576l29.447-29.196c0.785-0.777,0.79-2.043,0.012-2.828S79.249,34.781,78.466,35.559z"/>
                 </g>
             </svg>
-            <!-- <svg class="dropdown" viewbox="0 0 100 100">
-                <rect class="left"
-                    width="50"
-                    height="10"
-                    x="10"
-                    rx="5"></rect>
-                <rect class="right"
-                    width="50"
-                    height="10"
-                    x="40"
-                    rx="5"></rect>
-            </svg> -->
         </button>
         <?php include 'wonTrophies.php';?>
     </section>
-    <section>
-
+        <label for="teamDropdown">Choose a team:</label>
+        <select name="teamDropdown" id="teamDropdown">
+            <?php include 'teamDropdown.php';?>
+        </select>
     </section>
 </body>
 </html>

@@ -16,7 +16,7 @@ window.onload = () => {
       } else {
         console.log("maxheight not false or something");
         console.log(contents[i].scrollHeight);
-        contents[i].style.maxHeight = "min-content";
+        contents[i].style.maxHeight = contents[i].scrollHeight + "px";
       }
     });
   }

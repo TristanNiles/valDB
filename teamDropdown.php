@@ -1,5 +1,5 @@
 <?php
-$qry = $mysqli->query("SELECT TEAM_ACR FROM FRANCHISED;"); //eventually change query to select players on teams who have won trophies
+$qry = $mysqli->query("SELECT TEAM_ACR FROM FRANCHISED;"); //eventually change query to select full team name
 if ($qry == false) {
     echo "returned false";
 } else {

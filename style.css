@@ -4,6 +4,7 @@
 	--light: #f6f2f4;
 	--accent: #f80011;
 	--anim: 0.2s ease-out;
+	--rad: 0.25rem;
 }
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -46,6 +47,14 @@ select {
 	color: var(--light);
 	font: inherit;
 }
+input[type="radio"] {
+	visibility: hidden;
+	display: none;
+	width: 0;
+}
+label {
+	cursor: pointer;
+}
 .collapsible {
 	cursor: pointer;
 	border-color: transparent;
@@ -62,7 +71,7 @@ select {
 .collapsible:hover {
 	background-color: var(--light);
 	color: var(--accent);
-	filter: drop-shadow(0 3px 0 var(--accent));
+	box-shadow: 0 2px 0 var(--accent);
 }
 .collapseContent {
 	background: var(--light);
@@ -74,7 +83,7 @@ select {
 .collapseContent > table {
 	width: 100%;
 }
-.dropdown {
+.arrow {
 	height: 100%;
 	aspect-ratio: 1;
 	position: absolute;
@@ -84,14 +93,63 @@ select {
 	rotate: 0deg;
 	transition: rotate var(--anim), fill var(--anim), stroke var(--anim);
 }
-.active > .dropdown {
+.active > .arrow {
 	rotate: 90deg;
 }
-.collapsible:hover > .dropdown {
+.collapsible:hover > .arrow {
 	//fill: var(--accent);
 	stroke: var(--accent);
 }
 .collapseContainer {
-	border-radius: 0.15rem;
+	border-radius: var(--rad);
 	overflow: hidden;
 }
+.dropdownContainer {
+	width: 20rem;
+	position: relative;
+}
+.dropdownButton {
+	appearance: none;
+	position: relative;
+	border: 2px solid var(--accent);
+	background: transparent;
+	font: inherit;
+	color: var(--accent);
+	padding: 0.25em 2em 0.25em 0.5em;
+	width: 100%;
+	border-radius: var(--rad);
+	transition: background-color var(--anim);
+	text-align: left;
+	z-index: 101;
+}
+.dropdownButton:hover {
+	border: 2px solid var(--light);
+	background: var(--light);
+}
+.dropdownButton > .arrow {
+	stroke: var(--accent);
+}
+.dropdownButton.active {
+	border-radius: var(--rad) var(--rad) 0 0;
+}
+.dropdownButton.active:hover {
+	box-shadow: 0 2px 0 var(--accent);
+}
+.dropdownContent {
+	position: absolute;
+	z-index: 100;
+	background: var(--light);
+	color: var(--accent);
+	width: 100%;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height var(--anim);
+	border-radius: 0 0 var(--rad) var(--rad);
+}
+.dropdownContent > label {
+	display: block;
+	width: 100%;
+	padding: 0.25em 0.5em;
+	transition: background-color var(--anim), color var(--anim);
+}
+

@@ -7,7 +7,6 @@ if ($qry == false) {
     $all = $qry->fetch_all();
     $height = count($all);
     $width = count($all[0]);
-    echo "<div class='collapseContent'>";
     echo "<table id='wonTrophiesTable'>";
     for ($i = 0; $i < $height; $i++){
         echo "<tr>";
@@ -17,6 +16,5 @@ if ($qry == false) {
         echo "</tr>";
     }
     echo "</table>";
-    echo "</div>";
 }
 ?>

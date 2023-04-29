@@ -29,14 +29,16 @@
                     </g>
                 </svg>
             </button>
-            <?php include 'wonTrophies.php';?>
+            <div class="collapseContent">
+                <?php include 'wonTrophies.php';?>
+            </div>
         </div>
     </section>
     <hr>
     <section>
         <div id="teamDropdownLabel">Choose a team:</div>
         <div class="dropdownContainer">
-            <button class="dropdownButton">DRX
+            <button class="dropdownButton collapsible">DRX
                 <svg class='arrow'
                     fill="none" version="1.1"
                     id="Layer_1"
@@ -56,12 +58,8 @@
                     </g>
                 </svg>
             </button>
-            <div class="dropdownContent">
-                <label for="Fanatic">Fanatic</label>
-                <input type="radio" id="Fanatic" name="Fanatic"/>
-                <label for="Sentinels">Sentinels</label>
-                <input type="radio" id="Sentinels" name="Sentinels"/>
-                <!-- <?php include 'teamDropdown.php';?> -->
+            <div class="dropdownContent collapseContent">
+                <?php include 'teamDropdown.php';?>
             </div>
         </div>
         <br>
@@ -87,7 +85,9 @@
                     </g>
                 </svg>
             </button>
-            <?php include 'teamPlayers.php';?>
+            <div class="collapseContent">
+                <!-- <?php include 'teamPlayers.php';?> -->
+            </div>
         </div>
     </section>
 </body>

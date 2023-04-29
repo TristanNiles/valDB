@@ -6,5 +6,6 @@ if ($mysqli->connect_errno) {
 	exit();
 }
 $wonTrophies = false;
+$teamName = "DRX";
 
 ?>

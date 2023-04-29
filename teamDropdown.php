@@ -1,5 +1,5 @@
 <?php
-$qry = $mysqli->query("SELECT TEAM_ACR FROM FRANCHISED;"); //eventually change query to select full team name
+$qry = $mysqli->query("SELECT NAME FROM TEAM;");
 if ($qry == false) {
     echo "returned false";
 } else {
@@ -7,8 +7,9 @@ if ($qry == false) {
     $height = count($all);
     //$width = count($all[0]);
     for ($i = 0; $i < $height; $i++){
-        $name = $all[$i][0];
-        echo "<option value='$name'>$name</option>";
+        $teamName = $all[$i][0];
+        echo "<label for='$teamName'>$teamName</label>";
+        echo "<input type='radio' id='$teamName' name='$teamName'/>";
     }
 }
 ?>

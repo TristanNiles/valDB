@@ -40,11 +40,13 @@ window.onload = () => {
       for (let j = 0; j < dropdownBtns.length; j++) {
         let currLabel = dropdownBtns[j].previousElementSibling;
         if (i == j) {
+          console.log(dropdowns[0].innerHTML);
+          dropdowns[0].innerHTML = currLabel.innerHTML;
           currLabel.style.backgroundColor = "var(--accent)";
           currLabel.style.color = "var(--light)";
         } else {
           currLabel.style.backgroundColor = "var(--light)";
-          currLabel.style.color = "var(--accent)";
+          currLabel.style.color = "var(--accents)";
         }
       }
 

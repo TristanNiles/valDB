@@ -150,6 +150,10 @@ label {
 	display: block;
 	width: 100%;
 	padding: 0.25em 0.5em;
+	border: 2px solid var(--light);
 	transition: background-color var(--anim), color var(--anim);
 }
-
+.dropdownContent > label:hover {
+	background:  var(--dark);
+	border-color: var(--accent);
+}

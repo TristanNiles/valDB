@@ -1,5 +1,5 @@
 <?php
-$qry = $mysqli->query("SELECT IGN, TEAM_ACR FROM PLAYERS;"); //eventually change query to select players on teams who have won trophies
+$qry = $mysqli->query("SELECT IGN, PLAYERS.TEAM_ACR, TROPHY FROM PLAYERS, TROPHY WHERE TROPHY.TEAM_ACR = PLAYERS.TEAM_ACR; "); //eventually change query to select players on teams who have won trophies
 if ($qry == false) {
     echo "returned false";
 } else {

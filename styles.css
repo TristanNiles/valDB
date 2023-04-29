@@ -68,7 +68,7 @@ label {
 	padding: 0.5rem;
 	position: relative;
 }
-.collapsible:hover {
+.collapseContainer > button:hover {
 	background-color: var(--light);
 	color: var(--accent);
 	box-shadow: 0 2px 0 var(--accent);

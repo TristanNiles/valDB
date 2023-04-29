@@ -1,4 +1,5 @@
 <?php
+
 $qry = $mysqli->query("SELECT NAME FROM TEAM;");
 if ($qry == false) {
     echo "returned false";

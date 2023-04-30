@@ -1,3 +1,41 @@
+function sortTable(idx, sortableIdx) {
+  console.log(idx);
+  console.log(sortableIdx);
+  let table = document.getElementsByClassName("sortable")[sortableIdx];
+  let rows = table.rows;
+  let currCell, nextCell;
+  let asc = true; //false if desc
+  let switching = true;
+  let shouldSwitch = false;
+  let switchCount, i = 0;
+
+  while (switching) {
+    rows = table.rows
+    switching = false;
+    for (i = 1; i < rows.length - 1; i++) {
+      currCell = rows[i].getElementsByTagName("td")[idx];
+      nextCell = rows[i+1].getElementsByTagName("td")[idx];
+
+      if (
+        (asc && currCell.innerHTML.toLowerCase() > nextCell.innerHTML.toLowerCase()) ||
+        (!asc && currCell.innerHTML.toLowerCase() < nextCell.innerHTML.toLowerCase())
+        ) {
+          shouldSwitch= true;
+          break;
+      }
+    }
+
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchCount++;
+    } else if (switchCount == 0 && asc) {
+      asc = false;
+      switching = true;
+    }
+  }
+}
+
 function teamPlayersPost(data) {
   let teamPlayersHR = new XMLHttpRequest();
   let teamPlayers = document.getElementById("teamPlayers");
@@ -7,7 +45,7 @@ function teamPlayersPost(data) {
 
   teamPlayersHR.onreadystatechange = function() {
     if (teamPlayersHR.readyState == 4 /*&& teamPlayers.status == 200*/) {
-      //console.log(teamPlayersHR.responseText);
+      
       teamPlayers.innerHTML = teamPlayersHR.responseText;
       teamPlayers.maxHeight = teamPlayers.scrollHeight + "px";
     }
@@ -26,7 +64,7 @@ function maxStatPost(data) {
 
   maxStatHR.onreadystatechange = function() {
     if (maxStatHR.readyState == 4 /*&& maxStat.status == 200*/) {
-      //console.log(maxStatHR.responseText);
+      
       maxStat.innerHTML = maxStatHR.responseText;
       maxStat.maxHeight = maxStat.scrollHeight + "px";
     }
@@ -65,7 +103,7 @@ window.onload = () => {
   }
 
   for (let i = 0; i < dropdownLabels.length; i++) {
-    console.log(i);
+    
     dropdownLabels[i].addEventListener("click", function() {
 
       for (let j = 0; j < dropdownBtns.length; j++) {

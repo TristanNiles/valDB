@@ -9,19 +9,19 @@ if ($qry == false) {
     $width = count($all[0]);
     echo "<table class='sortable'>";
     echo "<tr>
-            <th>Players</th>
-            <th>GPU</th>
-            <th>Mouse</th>
-            <th>Keyboard</th>
-            <th>Crosshair</th>
-            <th>Sensitivity</th>
-            <th>First bloods</th>
-            <th>First deaths</th>
-            <th>ACS</th>
-            <th>KD</th>
-            <th>Win percentage</th>
-            <th>HS</th>
-            <th>KAST</th>
+            <th onclick='sortTable(0, 0)'>Players</th>
+            <th onclick='sortTable(1, 0)'>GPU</th>
+            <th onclick='sortTable(2, 0)'>Mouse</th>
+            <th onclick='sortTable(3, 0)'>Keyboard</th>
+            <th onclick='sortTable(4, 0)'>Crosshair</th>
+            <th onclick='sortTable(5, 0)'>Sensitivity</th>
+            <th onclick='sortTable(6, 0)'>First bloods</th>
+            <th onclick='sortTable(7, 0)'>First deaths</th>
+            <th onclick='sortTable(8, 0)'>ACS</th>
+            <th onclick='sortTable(9, 0)'>KD</th>
+            <th onclick='sortTable(10, 0)'>Win percentage</th>
+            <th onclick='sortTable(11, 0)'>HS</th>
+            <th onclick='sortTable(12, 0)'>KAST</th>
         </tr>";
     for ($i = 0; $i < $height; $i++){
         echo "<tr>";

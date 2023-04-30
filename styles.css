@@ -18,30 +18,21 @@ body {
 	padding: 1rem 15rem;
 }
 ::-webkit-scrollbar {
-	width: 0.2rem;
+	width: 20px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
-	background: transparent;
-	border: 2px solid var(--light);
-	border-radius: 100px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: var(--accent);
-	border-radius: 100px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	transition: background-color 1s ease-out;
 	background: var(--light);
+	outline: 2px solid var(--light);
+}
+::-webkit-scrollbar-thumb {
+	background: #0a1917f0;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--dark);
 }
 hr {
 	border-color: var(--accent);
-}
+}*/
 section {
 	margin: 5rem 0;
 }
@@ -59,7 +50,7 @@ tr:last-child > td {
 	border-bottom: none;
 }
 select {
-	//resetting default styling
+	/* resetting default styling */
 	appearance: none;
 	border: none;
 	outline: none;
@@ -119,7 +110,6 @@ label {
 	rotate: 90deg;
 }
 .collapsible:hover > .arrow {
-	//fill: var(--accent);
 	stroke: var(--accent);
 }
 .collapseContainer {
@@ -142,7 +132,6 @@ label {
 	border-radius: var(--rad);
 	transition: background-color var(--anim), border-radius 0s linear 0.2s;
 	text-align: left;
-	//z-index: 101;
 }
 .dropdownButton:hover {
 	border: 2px solid var(--light);
@@ -160,7 +149,6 @@ label {
 }
 .dropdownContent {
 	position: absolute;
-	//z-index: 100;
 	background: var(--light);
 	color: var(--accent);
 	width: 100%;

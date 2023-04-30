@@ -118,9 +118,9 @@ label {
 	padding: 0.25em 2em 0.25em 0.5em;
 	width: 100%;
 	border-radius: var(--rad);
-	transition: background-color var(--anim);
+	transition: background-color var(--anim), border-radius 0s linear 0.2s;
 	text-align: left;
-	z-index: 101;
+	//z-index: 101;
 }
 .dropdownButton:hover {
 	border: 2px solid var(--light);
@@ -131,13 +131,14 @@ label {
 }
 .dropdownButton.active {
 	border-radius: var(--rad) var(--rad) 0 0;
+	transition: border-radius var(--anim);
 }
 .dropdownButton.active:hover {
 	box-shadow: 0 2px 0 var(--accent);
 }
 .dropdownContent {
 	position: absolute;
-	z-index: 100;
+	//z-index: 100;
 	background: var(--light);
 	color: var(--accent);
 	width: 100%;
@@ -156,4 +157,16 @@ label {
 .dropdownContent > label:hover {
 	background:  var(--dark);
 	border-color: var(--accent);
+}
+.dropdownContent.even {
+	z-index: 200;
+}
+.dropdownContent.odd {
+	z-index: 100;
+}
+.dropdownButton.even {
+	z-index: 201;
+}
+.dropdownButton.odd {
+	z-index: 101;
 }

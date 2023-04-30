@@ -1,37 +1,34 @@
+//mostly from "How to EASILY sort HTML Tables with CSS & JavaScript - Web Development Tutorial" by dcode on YouTube
 function sortTable(idx, sortableIdx) {
+  let asc = true;
   let table = document.getElementsByClassName("sortable")[sortableIdx];
-  let rows = table.rows;
-  let currCell, nextCell;
-  let asc = true; //false if desc
-  let switching = true;
-  let shouldSwitch = false;
-  let switchCount, i = 0;
+  let tbody = table.tBodies[0]; //assuming 1 tbody in any table
+  let rows = Array.from(tbody.querySelectorAll("tr")); //get all rows in the body in an array (allowing us to have javascript sort it)
 
-  while (switching) {
-    rows = table.rows
-    switching = false;
-    for (i = 1; i < rows.length - 1; i++) {
-      currCell = rows[i].getElementsByTagName("td")[idx];
-      nextCell = rows[i+1].getElementsByTagName("td")[idx];
-
-      if (
-        (asc && currCell.innerHTML.toLowerCase() > nextCell.innerHTML.toLowerCase()) ||
-        (!asc && currCell.innerHTML.toLowerCase() < nextCell.innerHTML.toLowerCase())
-        ) {
-          shouldSwitch= true;
-          break;
-      }
-    }
-
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchCount++;
-    } else if (switchCount == 0 && asc) {
-      asc = false;
-      switching = true;
-    }
+  if (table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.contains("asc")) {
+    asc = false;
   }
+
+  let ascMod = asc ? 1 : -1; //the ascMod will be 1 if ascending, -1 if descending
+
+  //sort function for the rows
+  let sortedRows = rows.sort((x, y) => {
+    //console.log(x);
+    //console.log(y);
+    xText = x.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for x
+    yText = y.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for y
+
+    return xText > yText ? ascMod : (-1 * ascMod); //return ascMod if xText is greater than yText, else invert ascMod
+  })
+
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild); //remove all children from tbody (all rows) so we can replace with our sorted rows
+  }
+  tbody.append(...sortedRows); //pass in all sorted rows;
+
+  table.querySelectorAll("th").forEach(th => th.classList.remove("asc", "desc")); //remove all asc and desc classes from table header so they don't compound
+  table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("asc", asc); //add ascending class to table header if asc
+  table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("desc", !asc); //add descending to table header if !asc
 }
 
 function teamPlayersPost(data) {

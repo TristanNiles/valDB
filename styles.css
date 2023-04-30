@@ -17,6 +17,28 @@ body {
 	font-weight: 500;
 	padding: 1rem 15rem;
 }
+::-webkit-scrollbar {
+	width: 0.2rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+	border: 2px solid var(--light);
+	border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--accent);
+	border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	transition: background-color 1s ease-out;
+	background: var(--light);
+}
 hr {
 	border-color: var(--accent);
 }
@@ -169,4 +191,20 @@ label {
 }
 .dropdownButton.odd {
 	z-index: 101;
+}
+.sortable {
+	display: block;
+	overflow-x: scroll;
+	text-align: right;
+	border-radius: var(--rad);
+}
+.sortable > tbody > tr > th:nth-child(1), .sortable > tbody > tr > td:nth-child(1) {
+	text-align: left;
+}
+.sortable > tbody > tr:nth-child(1) {
+	background: var(--light);
+	color: var(--dark);
+}
+.sortable > tbody > tr > th, .sortable > tbody > tr > td {
+	padding: 0.25em 0.5em;
 }

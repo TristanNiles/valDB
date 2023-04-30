@@ -31,5 +31,4 @@ if ($qry == false) {
     $ret = $ret . "</table>";
     print $ret;
 }
-
 ?>

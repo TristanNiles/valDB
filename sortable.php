@@ -8,21 +8,24 @@ if ($qry == false) {
     $height = count($all);
     $width = count($all[0]);
     echo "<table class='sortable'>";
-    echo "<tr>
-            <th onclick='sortTable(0, 0)'>Players</th>
-            <th onclick='sortTable(1, 0)'>GPU</th>
-            <th onclick='sortTable(2, 0)'>Mouse</th>
-            <th onclick='sortTable(3, 0)'>Keyboard</th>
-            <th onclick='sortTable(4, 0)'>Crosshair</th>
-            <th onclick='sortTable(5, 0)'>Sensitivity</th>
-            <th onclick='sortTable(6, 0)'>First bloods</th>
-            <th onclick='sortTable(7, 0)'>First deaths</th>
-            <th onclick='sortTable(8, 0)'>ACS</th>
-            <th onclick='sortTable(9, 0)'>KD</th>
-            <th onclick='sortTable(10, 0)'>Win percentage</th>
-            <th onclick='sortTable(11, 0)'>HS</th>
-            <th onclick='sortTable(12, 0)'>KAST</th>
-        </tr>";
+    echo "<thead>
+            <tr>
+                <th onclick='sortTable(0, 0)'>Players</th>
+                <th onclick='sortTable(1, 0)'>GPU</th>
+                <th onclick='sortTable(2, 0)'>Mouse</th>
+                <th onclick='sortTable(3, 0)'>Keyboard</th>
+                <th onclick='sortTable(4, 0)'>Crosshair</th>
+                <th onclick='sortTable(5, 0)'>Sensitivity</th>
+                <th onclick='sortTable(6, 0)'>First bloods</th>
+                <th onclick='sortTable(7, 0)'>First deaths</th>
+                <th onclick='sortTable(8, 0)'>ACS</th>
+                <th onclick='sortTable(9, 0)'>KD</th>
+                <th onclick='sortTable(10, 0)'>Win percentage</th>
+                <th onclick='sortTable(11, 0)'>HS</th>
+                <th onclick='sortTable(12, 0)'>KAST</th>
+            </tr>
+        </thead>
+        <tbody>";
     for ($i = 0; $i < $height; $i++){
         echo "<tr>";
         for ($j = 0; $j < $width; $j++) {
@@ -30,6 +33,7 @@ if ($qry == false) {
         }
         echo "</tr>";
     }
-    echo "</table>";
+    echo "</tbody>
+    </table>";
 }
 ?>

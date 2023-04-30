@@ -198,13 +198,13 @@ label {
 	text-align: right;
 	border-radius: var(--rad);
 }
-.sortable > tbody > tr > th:nth-child(1), .sortable > tbody > tr > td:nth-child(1) {
+.sortable > thead > tr > th:nth-child(1), .sortable > tbody > tr > td:nth-child(1) {
 	text-align: left;
 }
-.sortable > tbody > tr:nth-child(1) {
+.sortable > thead > tr {
 	background: var(--light);
 	color: var(--dark);
 }
-.sortable > tbody > tr > th, .sortable > tbody > tr > td {
+.sortable > thead > tr > th, .sortable > tbody > tr > td {
 	padding: 0.25em 0.5em;
 }

@@ -1,6 +1,4 @@
 function sortTable(idx, sortableIdx) {
-  console.log(idx);
-  console.log(sortableIdx);
   let table = document.getElementsByClassName("sortable")[sortableIdx];
   let rows = table.rows;
   let currCell, nextCell;

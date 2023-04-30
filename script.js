@@ -36,6 +36,25 @@ function maxStatPost(data) {
   maxStat.innerHTML = "...";
 }
 
+function teamSponsorPost(data) {
+  console.log("we got here")
+  let sponsorHR = new XMLHttpRequest();
+  let sponsor = document.getElementById("teamSponsors");
+
+  sponsorHR.open("POST", "teamSponsors.php", true);
+  sponsorHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  sponsorHR.onreadystatechange = function() {
+    if (sponsorHR.readyState == 4 /*&& sponsor.us == 200*/) {
+      //console.log(sponsorHR.responseText);
+      sponsor.innerHTML = sponsorHR.responseText;
+      sponsor.maxHeight = sponsor.scrollHeight + "px";
+    }
+  }
+
+  sponsorHR.send(data);
+  sponsor.innerHTML = "...";
+}
 
 window.onload = () => {
   let collapse = document.getElementsByClassName("collapsible");
@@ -47,6 +66,7 @@ window.onload = () => {
   let data = "";
   data = "name=DRX"; 
   teamPlayersPost(data);
+  teamSponsorPost(data);
   data="stat=FIRST_BLOOD";
   maxStatPost(data);
 
@@ -75,6 +95,7 @@ window.onload = () => {
           if (currLabel.classList.contains("teamLabel")) {
             data = "name=" + currLabel.innerHTML;
             teamPlayersPost(data);
+            teamSponsorPost(data);
             dropdowns[0].replaceChildren(currLabel.innerHTML, dropdowns[0].children[0]);
           } else if (currLabel.classList.contains("statLabel")) {
             data = "stat=";

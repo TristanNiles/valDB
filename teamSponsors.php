@@ -10,11 +10,11 @@ function run($teamName) {
         exit();
     }
 
-    $qry = $mysqli->query("SELECT IGN, AGE FROM PLAYERS, TEAM WHERE TEAM.NAME = '$teamName' AND TEAM.TEAM_ACR = PLAYERS.TEAM_ACR;");
-
+    $qry = $mysqli->query("SELECT SPONSOR FROM SPONSORS, TEAM WHERE TEAM.NAME = '$teamName' AND TEAM.TEAM_ACR = SPONSORS.TEAM_ACR;");
     if($qry){
         while($row = $qry->fetch_assoc()){
-            echo "<tr> <td>IGN:". $row["IGN"] . "</td> <td>AGE:" . $row["AGE"] . "</td> </tr>";
+            
+            echo "<tr> <td>". $row["SPONSOR"] . "</td> </tr>";
         }
     }
 
@@ -24,7 +24,7 @@ function run($teamName) {
 
 
 $teamName = $_POST['name'];
-echo "<table id='teamPlayersTable'>";
+echo "<table id='teamSponsorsTable'>";
 run($teamName);
 echo "</table>";
 

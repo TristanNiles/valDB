@@ -1,3 +1,24 @@
+function textPost() {
+  console.log("textPost");
+  let xhr = new XMLHttpRequest();
+  let element = document.getElementById("playerInfoBody");
+  let val = document.getElementById("playerInput").value;
+  let data = "player=" + val;
+
+  xhr.open("POST", "playerInfo.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 /*&& xhr.status == 200*/) {
+      console.log(xhr.responseText);
+      element.innerHTML = xhr.responseText;
+    }
+  }
+
+  xhr.send(data);
+  element.innerHTML = "..."
+}
+
 //mostly from "How to EASILY sort HTML Tables with CSS & JavaScript - Web Development Tutorial" by dcode on YouTube
 function sortTable(idx, sortableIdx) {
   let asc = true;

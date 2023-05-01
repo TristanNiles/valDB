@@ -68,6 +68,35 @@ input[type="radio"] {
 label {
 	cursor: pointer;
 }
+.search {
+	border: none;
+	font: inherit;
+	background: var(--accent);
+	color: var(--light);
+	border-radius: var(--rad);
+	padding: 0.25em 0.75em;
+	transition: background-color var(--anim), color var(--anim), transform var(--anim);
+	font-weight: 700;
+}
+.search:hover {
+	background: var(--light);
+	color: var(--accent);
+}
+.search:active {
+	transform: translateY(2px);
+}
+input[type="text"] {
+	appearance: none;
+	border: none;
+	outline: none;
+	font: inherit;
+	padding: 0.25em 0.75em;
+	border-radius: var(--rad);
+	background: var(--light);
+}
+input[type="text"]:focus {
+	color: var(--dark);
+}
 .collapsible {
 	cursor: pointer;
 	border-color: transparent;
@@ -78,7 +107,7 @@ label {
 	width: 100%;
 	text-align: left;
 	transition: background-color var(--anim), color var(--anim);
-	padding: 0.5rem;
+	padding: 0.25em 0.75em;
 	position: relative;
 }
 .collapseContainer > button:hover {
@@ -127,7 +156,7 @@ label {
 	background: transparent;
 	font: inherit;
 	color: var(--accent);
-	padding: 0.25em 2em 0.25em 0.5em;
+	padding: 0.25em 2em 0.25em 0.75em;
 	width: 100%;
 	border-radius: var(--rad);
 	transition: background-color var(--anim), border-radius 0s linear 0.2s;
@@ -161,7 +190,7 @@ label {
 .dropdownContent > label {
 	display: block;
 	width: 100%;
-	padding: 0.25em 0.5em;
+	padding: 0.25em 0.75em;
 	border: 2px solid var(--light);
 	transition: background-color var(--anim), color var(--anim);
 }
@@ -181,19 +210,25 @@ label {
 .dropdownButton.odd {
 	z-index: 101;
 }
-.sortable {
+.outerTable {
 	display: block;
 	overflow-x: scroll;
 	text-align: right;
 	border-radius: var(--rad);
 }
-.sortable > thead > tr > th:nth-child(1), .sortable > tbody > tr > td:nth-child(1) {
+.outerTable > thead > tr > th:nth-child(1), .outerTable > tbody > tr > td:nth-child(1) {
 	text-align: left;
 }
-.sortable > thead > tr {
+.outerTable > thead > tr {
 	background: var(--light);
 	color: var(--dark);
 }
-.sortable > thead > tr > th, .sortable > tbody > tr > td {
-	padding: 0.25em 0.5em;
+.outerTable > thead > tr > th, .outerTable > tbody > tr > td {
+	padding: 0.25em 0.75em;
+}
+#playerInfo {
+	width: min-content;
+	padding: 0;
+	margin: 0;
+	background: transparent;
 }

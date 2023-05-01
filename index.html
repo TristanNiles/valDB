@@ -6,7 +6,35 @@
     <?php include 'main.php';?>
 </head>
 <body>
-    <section id="sec1">
+    <section>
+        <input type="text" id="playerInput" placeholder="Enter a player"/>
+        <button type="button" class="search" onclick="textPost()">Search</button>
+        <h3>Player at a glance</h2>
+        <table class="outerTable" id="playerInfo">
+            <thead>
+                <tr>
+                    <th>Alias</th>
+                    <th>Team</th>
+                    <th>Region</th>
+                    <th>ACS</th>
+                    <th>KD</th>
+                    <th>Win chance</th>
+                </tr>
+            </thead>
+            <tbody id="playerInfoBody">
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <hr>
+    <section>
         <div class="collapseContainer">
             <button type="button" class="collapsible">
                 Players with trophies
@@ -35,7 +63,7 @@
         </div>
     </section>
     <hr>
-    <section id="sec2">
+    <section>
         <div id="teamDropdownLabel">Choose a team:</div>
         <div class="dropdownContainer">
             <button class="dropdownButton collapsible even">DRX
@@ -89,7 +117,7 @@
         </div>
     </section>
     <hr>
-    <section id="sec3">
+    <section>
         <div id="statDropdownLabel">Choose a stat:</div>
         <div class="dropdownContainer">
             <button class="dropdownButton collapsible odd">First bloods
@@ -160,7 +188,7 @@
         <?php include 'sortable.php';?>
     </section>
     <hr>
-    <section id="sec4">
+    <section>
         <div id="teamDropdownLabel">Choose a team:</div>
         <div class="dropdownContainer">
             <button class="dropdownButton collapsible odd">DRX

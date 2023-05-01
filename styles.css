@@ -156,6 +156,7 @@ label {
 	overflow: hidden;
 	transition: max-height var(--anim);
 	border-radius: 0 0 var(--rad) var(--rad);
+	box-shadow: 0 2px 2px 0 #0a1917f0;
 }
 .dropdownContent > label {
 	display: block;

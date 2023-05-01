@@ -37,7 +37,7 @@ function sortTable(idx, sortableIdx) {
 }
 
 function collapsiblePost(data, id) {
-  if (id != "teamPlayers" && id != "maxStat") { return; }
+  if (id != "teamPlayers" && id != "maxStat" && id != "teamSponsors") { return; }
 
 
   let phpFile = id + ".php";
@@ -70,6 +70,7 @@ window.onload = () => {
   data = "name=DRX"; 
   //teamPlayersPost(data);
   collapsiblePost(data, "teamPlayers");
+  collapsiblePost(data, "teamSponsors");
   data="stat=FIRST_BLOOD";
   //maxStatPost(data);
   collapsiblePost(data, "maxStat");
@@ -104,6 +105,7 @@ window.onload = () => {
           } else if (currLabel.classList.contains("teamLabel2")) {
             data = "name=" + currLabel.innerHTML;
             //teamSponsorsPost(data);
+            collapsiblePost(data, "teamSponsors");
             dropdowns[2].replaceChildren(currLabel.innerHTML, dropdowns[2].children[0]);
           } else if (currLabel.classList.contains("statLabel")) {
             data = "stat=";

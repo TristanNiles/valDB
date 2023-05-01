@@ -18,6 +18,11 @@ function sortTable(idx, sortableIdx) {
     xText = x.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for x
     yText = y.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for y
 
+    if (idx > 4) {
+      xText = parseFloat(xText);
+      yText = parseFloat(yText);
+    }
+
     return xText > yText ? ascMod : (-1 * ascMod); //return ascMod if xText is greater than yText, else invert ascMod
   })
 
@@ -105,7 +110,7 @@ window.onload = () => {
         let currLabel = dropdownBtns[j].previousElementSibling;
         if (i == j) {
           
-          if (currLabel.classList.contains("teamLabel")) {
+          if (currLabel.classList.contains("teamLabel1")) {
             data = "name=" + currLabel.innerHTML;
             teamPlayersPost(data);
             dropdowns[0].replaceChildren(currLabel.innerHTML, dropdowns[0].children[0]);

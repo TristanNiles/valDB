@@ -36,44 +36,28 @@ function sortTable(idx, sortableIdx) {
   table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("desc", !asc); //add descending to table header if !asc
 }
 
-function teamPlayersPost(data) {
-  let teamPlayersHR = new XMLHttpRequest();
-  let teamPlayers = document.getElementById("teamPlayers");
+function collapsiblePost(data, id) {
+  if (id != "teamPlayers" && id != "maxStat") { return; }
 
-  teamPlayersHR.open("POST", "teamPlayers.php", true);
-  teamPlayersHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  teamPlayersHR.onreadystatechange = function() {
-    if (teamPlayersHR.readyState == 4 /*&& teamPlayers.status == 200*/) {
-      
-      teamPlayers.innerHTML = teamPlayersHR.responseText;
-      teamPlayers.maxHeight = teamPlayers.scrollHeight + "px";
+  let phpFile = id + ".php";
+  let xhr = new XMLHttpRequest();
+  let element = document.getElementById(id);
+
+  xhr.open("POST", phpFile, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 /*&& xhr.status == 200*/) {
+      element.innerHTML = xhr.responseText;
+      element.maxHeight = element.scrollHeight + "px";
     }
   }
 
-  teamPlayersHR.send(data);
-  teamPlayers.innerHTML = "...";
+  xhr.send(data);
+  element.innerHTML = "..."
+
 }
-
-function maxStatPost(data) {
-  let maxStatHR = new XMLHttpRequest();
-  let maxStat = document.getElementById("maxStat");
-
-  maxStatHR.open("POST", "maxStat.php", true);
-  maxStatHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-  maxStatHR.onreadystatechange = function() {
-    if (maxStatHR.readyState == 4 /*&& maxStat.status == 200*/) {
-      
-      maxStat.innerHTML = maxStatHR.responseText;
-      maxStat.maxHeight = maxStat.scrollHeight + "px";
-    }
-  }
-
-  maxStatHR.send(data);
-  maxStat.innerHTML = "...";
-}
-
 
 window.onload = () => {
   let collapse = document.getElementsByClassName("collapsible");
@@ -84,9 +68,11 @@ window.onload = () => {
   let dropdownLabels = document.querySelectorAll(".dropdownContent > label");
   let data = "";
   data = "name=DRX"; 
-  teamPlayersPost(data);
+  //teamPlayersPost(data);
+  collapsiblePost(data, "teamPlayers");
   data="stat=FIRST_BLOOD";
-  maxStatPost(data);
+  //maxStatPost(data);
+  collapsiblePost(data, "maxStat");
 
   for (let i = 0; i < collapse.length; i++) {
     collapse[i].addEventListener("click", function() {
@@ -112,8 +98,13 @@ window.onload = () => {
           
           if (currLabel.classList.contains("teamLabel1")) {
             data = "name=" + currLabel.innerHTML;
-            teamPlayersPost(data);
+            collapsiblePost(data, "teamPlayers");
+            //teamPlayersPost(data);
             dropdowns[0].replaceChildren(currLabel.innerHTML, dropdowns[0].children[0]);
+          } else if (currLabel.classList.contains("teamLabel2")) {
+            data = "name=" + currLabel.innerHTML;
+            //teamSponsorsPost(data);
+            dropdowns[2].replaceChildren(currLabel.innerHTML, dropdowns[2].children[0]);
           } else if (currLabel.classList.contains("statLabel")) {
             data = "stat=";
             switch (currLabel.innerHTML) {
@@ -142,7 +133,8 @@ window.onload = () => {
                 console.log("nonexistent case");
                 break;
             }
-            maxStatPost(data);
+            //maxStatPost(data);
+            collapsiblePost(data, "maxStat");
             dropdowns[1].replaceChildren(currLabel.innerHTML, dropdowns[1].children[0]);
           }
 

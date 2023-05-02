@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("mysql.eecs.ku.edu", "t070m625", "Phoh7kei", "t070m625");
+$mysqli = new mysqli("mysql.eecs.ku.edu", "j654t520", "iena4que", "j654t520");
 
 if ($mysqli->connect_errno) {
 	printf("Connect failed: %s\n", $mysqli->connect_error);

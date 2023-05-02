@@ -6,6 +6,7 @@
     <?php include 'main.php';?>
 </head>
 <body>
+    <h1> VAL DB</h1>
     <section>
         <input type="text" id="playerInput" placeholder="Enter a player"/>
         <button type="button" class="search" onclick="textPost()">Search</button>
@@ -22,14 +23,6 @@
                 </tr>
             </thead>
             <tbody id="playerInfoBody">
-                <tr>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                </tr>
             </tbody>
         </table>
     </section>
@@ -115,8 +108,42 @@
             </button>
             <div class="collapseContent" id="teamPlayers"></div>
         </div>
+        <div class="collapseContainer">
+            <button type="button" class="collapsible">
+                Sponsors
+                <svg class='arrow'
+                    fill="none" version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 100 100"
+                    enable-background="new 0 0 100 100"
+                    xml:space="preserve"
+                    stroke="var(--light)"
+                    stroke-width="0.5em">
+                    <g>
+                        <path d="M78.466,35.559L50.15,63.633L22.078,35.317c-0.777-0.785-2.044-0.789-2.828-0.012s-0.789,2.044-0.012,2.827L48.432,67.58
+                            c0.365,0.368,0.835,0.563,1.312,0.589c0.139,0.008,0.278-0.001,0.415-0.021c0.054,0.008,0.106,0.021,0.16,0.022
+                            c0.544,0.029,1.099-0.162,1.515-0.576l29.447-29.196c0.785-0.777,0.79-2.043,0.012-2.828S79.249,34.781,78.466,35.559z"/>
+                    </g>
+                </svg>
+            </button>
+            <div class="collapseContent" id="teamSponsors"></div>
+        </div>
     </section>
     <hr>
+
+    <section id="secidk">
+        <div>
+            <h2> Teams and Players Table </h2>
+            <?php include 'TeamANDPlayerTable.php';?>
+        </div>
+    </section>
+   
+    <hr>
+
     <section>
         <div id="statDropdownLabel">Choose a stat:</div>
         <div class="dropdownContainer">
@@ -187,59 +214,6 @@
     <section>
         <?php include 'sortable.php';?>
     </section>
-    <hr>
-    <section>
-        <div id="teamDropdownLabel">Choose a team:</div>
-        <div class="dropdownContainer">
-            <button class="dropdownButton collapsible odd">DRX
-                <svg class='arrow'
-                    fill="none" version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 100 100"
-                    enable-background="new 0 0 100 100"
-                    xml:space="preserve"
-                    stroke="var(--light)"
-                    stroke-width="0.5em">
-                    <g>
-                        <path d="M78.466,35.559L50.15,63.633L22.078,35.317c-0.777-0.785-2.044-0.789-2.828-0.012s-0.789,2.044-0.012,2.827L48.432,67.58
-                            c0.365,0.368,0.835,0.563,1.312,0.589c0.139,0.008,0.278-0.001,0.415-0.021c0.054,0.008,0.106,0.021,0.16,0.022
-                            c0.544,0.029,1.099-0.162,1.515-0.576l29.447-29.196c0.785-0.777,0.79-2.043,0.012-2.828S79.249,34.781,78.466,35.559z"/>
-                    </g>
-                </svg>
-            </button>
-            <div class="dropdownContent collapseContent odd">
-                <?php include 'teamDropdown2.php';?>
-            </div>
-        </div>
-        <br>
-        <div class="collapseContainer">
-            <button type="button" class="collapsible">
-                Team sponsors
-                <svg class='arrow'
-                    fill="none" version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 100 100"
-                    enable-background="new 0 0 100 100"
-                    xml:space="preserve"
-                    stroke="var(--light)"
-                    stroke-width="0.5em">
-                    <g>
-                        <path d="M78.466,35.559L50.15,63.633L22.078,35.317c-0.777-0.785-2.044-0.789-2.828-0.012s-0.789,2.044-0.012,2.827L48.432,67.58
-                            c0.365,0.368,0.835,0.563,1.312,0.589c0.139,0.008,0.278-0.001,0.415-0.021c0.054,0.008,0.106,0.021,0.16,0.022
-                            c0.544,0.029,1.099-0.162,1.515-0.576l29.447-29.196c0.785-0.777,0.79-2.043,0.012-2.828S79.249,34.781,78.466,35.559z"/>
-                    </g>
-                </svg>
-            </button>
-            <div class="collapseContent" id="teamSponsors"></div>
-        </div>
-    </section>
+    
 </body>
 </html>

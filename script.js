@@ -80,6 +80,45 @@ function collapsiblePost(data, id) {
 
 }
 
+function maxStatPost(data) {
+  let maxStatHR = new XMLHttpRequest();
+  let maxStat = document.getElementById("maxStat");
+
+  maxStatHR.open("POST", "maxStat.php", true);
+  maxStatHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  maxStatHR.onreadystatechange = function() {
+    if (maxStatHR.readyState == 4 /*&& maxStat.status == 200*/) {
+      
+      maxStat.innerHTML = maxStatHR.responseText;
+      maxStat.maxHeight = maxStat.scrollHeight + "px";
+    }
+  }
+
+  maxStatHR.send(data);
+  maxStat.innerHTML = "...";
+}
+
+function teamSponsorPost(data) {
+  console.log("we got here")
+  let sponsorHR = new XMLHttpRequest();
+  let sponsor = document.getElementById("teamSponsors");
+
+  sponsorHR.open("POST", "teamSponsors.php", true);
+  sponsorHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  sponsorHR.onreadystatechange = function() {
+    if (sponsorHR.readyState == 4 /*&& sponsor.us == 200*/) {
+      //console.log(sponsorHR.responseText);
+      sponsor.innerHTML = sponsorHR.responseText;
+      sponsor.maxHeight = sponsor.scrollHeight + "px";
+    }
+  }
+
+  sponsorHR.send(data);
+  sponsor.innerHTML = "...";
+}
+
 window.onload = () => {
   let collapse = document.getElementsByClassName("collapsible");
   let collapseContents = document.getElementsByClassName("collapseContent");
@@ -89,9 +128,11 @@ window.onload = () => {
   let dropdownLabels = document.querySelectorAll(".dropdownContent > label");
   let data = "";
   data = "name=DRX"; 
+
+  teamSponsorPost(data);
   //teamPlayersPost(data);
   collapsiblePost(data, "teamPlayers");
-  collapsiblePost(data, "teamSponsors");
+
   data="stat=FIRST_BLOOD";
   //maxStatPost(data);
   collapsiblePost(data, "maxStat");
@@ -120,6 +161,7 @@ window.onload = () => {
           
           if (currLabel.classList.contains("teamLabel1")) {
             data = "name=" + currLabel.innerHTML;
+            teamSponsorPost(data);
             collapsiblePost(data, "teamPlayers");
             //teamPlayersPost(data);
             dropdowns[0].replaceChildren(currLabel.innerHTML, dropdowns[0].children[0]);

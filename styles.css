@@ -68,6 +68,20 @@ input[type="radio"] {
 label {
 	cursor: pointer;
 }
+
+h1{
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 64px;
+	letter-spacing: 2px;
+	word-spacing: 2px;
+	color: #FF1C1C;
+	-webkit-text-stroke: 3px rgb(255, 255, 255);
+	font-weight: 400;
+	text-decoration: underline rgb(255, 255, 255);
+	font-style: normal;
+	font-variant: normal;
+	text-transform: uppercase;
+}
 .search {
 	border: none;
 	font: inherit;

@@ -1,7 +1,7 @@
 function textPost() {
   console.log("textPost");
   let xhr = new XMLHttpRequest();
-  let element = document.getElementById("playerInfoBody");
+  let element = document.getElementById("playerInfo");
   let val = document.getElementById("playerInput").value;
   let data = "player=" + val;
 

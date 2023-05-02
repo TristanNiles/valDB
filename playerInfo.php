@@ -16,10 +16,21 @@ $qry2 = $mysqli->query("SELECT IGN, ACS, KD, WIN_PERC FROM STATS WHERE IGN= '$pl
 if ($qry == false) {
     echo "returned false";
 } else {
+    $ret = $ret . "<table class='outerTable playerInfoTable'>
+    <thead>
+        <tr>
+            <th>Alias</th>
+            <th>Team</th>
+            <th>Region</th>
+        </tr>
+    </thead>
+    <tbody>";
+
+
     $all = $qry->fetch_all();
     $height = count($all);
     if ($height < 1) {
-        print "<td colspan='6'>Invalid name</td>";
+        print "<tr><td colspan='6'>Invalid name</td></tr>";
         return;
     }
     $width = count($all[0]);
@@ -32,6 +43,7 @@ if ($qry == false) {
         }
         $ret = $ret . "</tr>";
     }
+    $ret = $ret . "</tbody></table>";
     print $ret;
     $ret = "";
 }
@@ -39,6 +51,17 @@ if ($qry == false) {
 if ($qry2 == false) {
     echo "returned false";
 } else {
+    $ret = $ret . "<br><table class='outerTable playerInfoTable'>
+    <thead>
+        <tr>
+            <th>Alias</th>
+            <th>ACS</th>
+            <th>KD</th>
+            <th>Win chance</th>
+        </tr>
+    </thead>
+    <tbody>";
+
     $all = $qry2->fetch_all();
     $height = count($all);
     if ($height < 1) {
@@ -55,6 +78,9 @@ if ($qry2 == false) {
         }
         $ret = $ret . "</tr>";
     }
+
+    $ret = $ret . "</tbody></table>";
+
     print $ret;
 }
 ?>

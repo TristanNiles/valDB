@@ -25,14 +25,14 @@ body {
 	outline: 2px solid var(--light);
 }
 ::-webkit-scrollbar-thumb {
-	background: #0a1917f0;
+	background: #0a1917c0;
 }
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--dark);
 }
 hr {
 	border-color: var(--accent);
-}*/
+}
 section {
 	margin: 5rem 0;
 }
@@ -82,6 +82,35 @@ h1{
 	font-variant: normal;
 	text-transform: uppercase;
 }
+.search {
+	border: none;
+	font: inherit;
+	background: var(--accent);
+	color: var(--light);
+	border-radius: var(--rad);
+	padding: 0.25em 0.75em;
+	transition: background-color var(--anim), color var(--anim), transform var(--anim);
+	font-weight: 700;
+}
+.search:hover {
+	background: var(--light);
+	color: var(--accent);
+}
+.search:active {
+	transform: translateY(2px);
+}
+input[type="text"] {
+	appearance: none;
+	border: none;
+	outline: none;
+	font: inherit;
+	padding: 0.25em 0.75em;
+	border-radius: var(--rad);
+	background: var(--light);
+}
+input[type="text"]:focus {
+	color: var(--dark);
+}
 .collapsible {
 	cursor: pointer;
 	border-color: transparent;
@@ -92,7 +121,7 @@ h1{
 	width: 100%;
 	text-align: left;
 	transition: background-color var(--anim), color var(--anim);
-	padding: 0.5rem;
+	padding: 0.25em 0.75em;
 	position: relative;
 }
 .collapseContainer > button:hover {
@@ -141,7 +170,7 @@ h1{
 	background: transparent;
 	font: inherit;
 	color: var(--accent);
-	padding: 0.25em 2em 0.25em 0.5em;
+	padding: 0.25em 2em 0.25em 0.75em;
 	width: 100%;
 	border-radius: var(--rad);
 	transition: background-color var(--anim), border-radius 0s linear 0.2s;
@@ -170,11 +199,12 @@ h1{
 	overflow: hidden;
 	transition: max-height var(--anim);
 	border-radius: 0 0 var(--rad) var(--rad);
+	box-shadow: 0 2px 2px 0 #0a1917f0;
 }
 .dropdownContent > label {
 	display: block;
 	width: 100%;
-	padding: 0.25em 0.5em;
+	padding: 0.25em 0.75em;
 	border: 2px solid var(--light);
 	transition: background-color var(--anim), color var(--anim);
 }
@@ -194,19 +224,25 @@ h1{
 .dropdownButton.odd {
 	z-index: 101;
 }
-.sortable {
+.outerTable {
 	display: block;
 	overflow-x: scroll;
 	text-align: right;
 	border-radius: var(--rad);
 }
-.sortable > thead > tr > th:nth-child(1), .sortable > tbody > tr > td:nth-child(1) {
+.outerTable > thead > tr > th:nth-child(1), .outerTable > tbody > tr > td:nth-child(1) {
 	text-align: left;
 }
-.sortable > thead > tr {
+.outerTable > thead > tr {
 	background: var(--light);
 	color: var(--dark);
 }
-.sortable > thead > tr > th, .sortable > tbody > tr > td {
-	padding: 0.25em 0.5em;
+.outerTable > thead > tr > th, .outerTable > tbody > tr > td {
+	padding: 0.25em 0.75em;
+}
+#playerInfo {
+	width: min-content;
+	padding: 0;
+	margin: 0;
+	background: transparent;
 }

@@ -1,3 +1,24 @@
+function textPost() {
+  console.log("textPost");
+  let xhr = new XMLHttpRequest();
+  let element = document.getElementById("playerInfoBody");
+  let val = document.getElementById("playerInput").value;
+  let data = "player=" + val;
+
+  xhr.open("POST", "playerInfo.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 /*&& xhr.status == 200*/) {
+      console.log(xhr.responseText);
+      element.innerHTML = xhr.responseText;
+    }
+  }
+
+  xhr.send(data);
+  element.innerHTML = "..."
+}
+
 //mostly from "How to EASILY sort HTML Tables with CSS & JavaScript - Web Development Tutorial" by dcode on YouTube
 function sortTable(idx, sortableIdx) {
   let asc = true;
@@ -18,6 +39,11 @@ function sortTable(idx, sortableIdx) {
     xText = x.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for x
     yText = y.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for y
 
+    if (idx > 4) {
+      xText = parseFloat(xText);
+      yText = parseFloat(yText);
+    }
+
     return xText > yText ? ascMod : (-1 * ascMod); //return ascMod if xText is greater than yText, else invert ascMod
   })
 
@@ -31,23 +57,27 @@ function sortTable(idx, sortableIdx) {
   table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("desc", !asc); //add descending to table header if !asc
 }
 
-function teamPlayersPost(data) {
-  let teamPlayersHR = new XMLHttpRequest();
-  let teamPlayers = document.getElementById("teamPlayers");
+function collapsiblePost(data, id) {
+  if (id != "teamPlayers" && id != "maxStat" && id != "teamSponsors") { return; }
 
-  teamPlayersHR.open("POST", "teamPlayers.php", true);
-  teamPlayersHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  teamPlayersHR.onreadystatechange = function() {
-    if (teamPlayersHR.readyState == 4 /*&& teamPlayers.status == 200*/) {
-      
-      teamPlayers.innerHTML = teamPlayersHR.responseText;
-      teamPlayers.maxHeight = teamPlayers.scrollHeight + "px";
+  let phpFile = id + ".php";
+  let xhr = new XMLHttpRequest();
+  let element = document.getElementById(id);
+
+  xhr.open("POST", phpFile, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 /*&& xhr.status == 200*/) {
+      element.innerHTML = xhr.responseText;
+      element.maxHeight = element.scrollHeight + "px";
     }
   }
 
-  teamPlayersHR.send(data);
-  teamPlayers.innerHTML = "...";
+  xhr.send(data);
+  element.innerHTML = "..."
+
 }
 
 function maxStatPost(data) {
@@ -98,10 +128,14 @@ window.onload = () => {
   let dropdownLabels = document.querySelectorAll(".dropdownContent > label");
   let data = "";
   data = "name=DRX"; 
-  teamPlayersPost(data);
+
   teamSponsorPost(data);
+  //teamPlayersPost(data);
+  collapsiblePost(data, "teamPlayers");
+
   data="stat=FIRST_BLOOD";
-  maxStatPost(data);
+  //maxStatPost(data);
+  collapsiblePost(data, "maxStat");
 
   for (let i = 0; i < collapse.length; i++) {
     collapse[i].addEventListener("click", function() {
@@ -125,11 +159,17 @@ window.onload = () => {
         let currLabel = dropdownBtns[j].previousElementSibling;
         if (i == j) {
           
-          if (currLabel.classList.contains("teamLabel")) {
+          if (currLabel.classList.contains("teamLabel1")) {
             data = "name=" + currLabel.innerHTML;
-            teamPlayersPost(data);
             teamSponsorPost(data);
+            collapsiblePost(data, "teamPlayers");
+            //teamPlayersPost(data);
             dropdowns[0].replaceChildren(currLabel.innerHTML, dropdowns[0].children[0]);
+          } else if (currLabel.classList.contains("teamLabel2")) {
+            data = "name=" + currLabel.innerHTML;
+            //teamSponsorsPost(data);
+            collapsiblePost(data, "teamSponsors");
+            dropdowns[2].replaceChildren(currLabel.innerHTML, dropdowns[2].children[0]);
           } else if (currLabel.classList.contains("statLabel")) {
             data = "stat=";
             switch (currLabel.innerHTML) {
@@ -158,7 +198,8 @@ window.onload = () => {
                 console.log("nonexistent case");
                 break;
             }
-            maxStatPost(data);
+            //maxStatPost(data);
+            collapsiblePost(data, "maxStat");
             dropdowns[1].replaceChildren(currLabel.innerHTML, dropdowns[1].children[0]);
           }
 

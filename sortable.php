@@ -7,7 +7,7 @@ if ($qry == false) {
     $all = $qry->fetch_all();
     $height = count($all);
     $width = count($all[0]);
-    echo "<table class='sortable'>";
+    echo "<table class='sortable outerTable'>";
     echo "<thead>
             <tr>
                 <th onclick='sortTable(0, 0)'>Players</th>

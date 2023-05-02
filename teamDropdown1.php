@@ -6,7 +6,7 @@ if ($qry == false) {
 } else {
     while($row = $qry->fetch_assoc()){
         $teamName = $row['NAME'];
-        echo "<label for='$teamName' class='teamLabel'>$teamName</label>";
+        echo "<label for='$teamName' class='teamLabel1'>$teamName</label>";
         echo "<input type='radio' id='$teamName' name='$teamName'/>";
     }
 }

@@ -1,3 +1,36 @@
+//mostly from "How to EASILY sort HTML Tables with CSS & JavaScript - Web Development Tutorial" by dcode on YouTube
+function sortTable(idx, sortableIdx) {
+  let asc = true;
+  let table = document.getElementsByClassName("sortable")[sortableIdx];
+  let tbody = table.tBodies[0]; //assuming 1 tbody in any table
+  let rows = Array.from(tbody.querySelectorAll("tr")); //get all rows in the body in an array (allowing us to have javascript sort it)
+
+  if (table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.contains("asc")) {
+    asc = false;
+  }
+
+  let ascMod = asc ? 1 : -1; //the ascMod will be 1 if ascending, -1 if descending
+
+  //sort function for the rows
+  let sortedRows = rows.sort((x, y) => {
+    //console.log(x);
+    //console.log(y);
+    xText = x.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for x
+    yText = y.querySelector("td:nth-child(" + (idx + 1) + ")").textContent.trim().toLowerCase(); //the text of the row at the index we want to sort by for y
+
+    return xText > yText ? ascMod : (-1 * ascMod); //return ascMod if xText is greater than yText, else invert ascMod
+  })
+
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild); //remove all children from tbody (all rows) so we can replace with our sorted rows
+  }
+  tbody.append(...sortedRows); //pass in all sorted rows;
+
+  table.querySelectorAll("th").forEach(th => th.classList.remove("asc", "desc")); //remove all asc and desc classes from table header so they don't compound
+  table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("asc", asc); //add ascending class to table header if asc
+  table.querySelector("th:nth-child(" + (idx + 1) + ")").classList.toggle("desc", !asc); //add descending to table header if !asc
+}
+
 function teamPlayersPost(data) {
   let teamPlayersHR = new XMLHttpRequest();
   let teamPlayers = document.getElementById("teamPlayers");
@@ -7,7 +40,7 @@ function teamPlayersPost(data) {
 
   teamPlayersHR.onreadystatechange = function() {
     if (teamPlayersHR.readyState == 4 /*&& teamPlayers.status == 200*/) {
-      //console.log(teamPlayersHR.responseText);
+      
       teamPlayers.innerHTML = teamPlayersHR.responseText;
       teamPlayers.maxHeight = teamPlayers.scrollHeight + "px";
     }
@@ -26,7 +59,7 @@ function maxStatPost(data) {
 
   maxStatHR.onreadystatechange = function() {
     if (maxStatHR.readyState == 4 /*&& maxStat.status == 200*/) {
-      //console.log(maxStatHR.responseText);
+      
       maxStat.innerHTML = maxStatHR.responseText;
       maxStat.maxHeight = maxStat.scrollHeight + "px";
     }
@@ -85,7 +118,7 @@ window.onload = () => {
   }
 
   for (let i = 0; i < dropdownLabels.length; i++) {
-    console.log(i);
+    
     dropdownLabels[i].addEventListener("click", function() {
 
       for (let j = 0; j < dropdownBtns.length; j++) {

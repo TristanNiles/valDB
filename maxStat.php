@@ -10,23 +10,25 @@ if ($mysqli->connect_errno) {
 
 $ret = "";
 //print $ret;
-$teamName = $_POST['stat'];
-if ($teamName == '') { $teamName = 'DRX'; }
-$qry = $mysqli->query("SELECT A.IGN, FirstBloods FROM PLAYERS A, (SELECT TEAM_ACR, MAX(FIRST_BLOOD) AS FirstBloods FROM STATS, PLAYERS WHERE STATS.IGN = PLAYERS.IGN GROUP BY TEAM_ACR) AS B, STATS C WHERE A.TEAM_ACR = B.TEAM_ACR AND C.IGN = A.IGN AND FirstBloods = C.FIRST_BLOOD;");
+$stat = $_POST['stat'];
+if ($stat == '') { $stat = 'FIRST_BLOOD'; }
+$qry = $mysqli->query("SELECT A.IGN, FirstBloods FROM PLAYERS A, (SELECT TEAM_ACR, MAX($stat) AS FirstBloods FROM STATS, PLAYERS WHERE STATS.IGN = PLAYERS.IGN GROUP BY TEAM_ACR) AS B, STATS C WHERE A.TEAM_ACR = B.TEAM_ACR AND C.IGN = A.IGN AND FirstBloods = C.$stat;");
 
 if ($qry == false) {
     echo "returned false";
 } else {
     $all = $qry->fetch_all();
     $height = count($all);
+    $width = count($all[0]);
     $ret = $ret . "<table id='maxStatTable'>";
     for ($i = 0; $i < $height; $i++){
         $ret = $ret . "<tr>";
-        $ret = $ret . "<td>".$all[$i][0]."</td>";
+        for ($j = 0; $j < $width; $j++) {
+            $ret = $ret . "<td>".$all[$i][$j]."</td>";
+        }
         $ret = $ret . "</tr>";
     }
     $ret = $ret . "</table>";
     print $ret;
 }
-
 ?>
